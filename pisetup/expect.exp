@@ -1,0 +1,37 @@
+#!/usr/bin/expect
+# This is an expect script to run on Mac that injects a setup script into
+# a Raspberry Pi and logs in via ssh. Its dependency is the ./login.sh
+# file also found in this directory. The IPADDR variable changes based
+# on input provided from the login.sh script.
+
+#this line is replaced with IP address input from the login.sh script.
+set IPADDR xxx
+
+#scp to send the setup.sh script to the pi
+spawn scp ./setup.sh pi@$IPADDR:/home/pi/
+expect {
+	"*yes/no" {send "yes\r"; exp_continue}
+	"assword: " {send "raspberry\r"; exp_continue}
+}
+
+#scp to send the expsetup.exp script to the pi
+spawn scp ./expsetup.exp pi@$IPADDR:/home/pi/
+expect {
+        "*yes/no" {send "yes\r"; exp_continue}
+        "assword: " {send "raspberry\r"; exp_continue}
+}
+
+#scp to send the update.sh script to the pi
+spawn scp ./update.sh pi@$IPADDR:/home/pi/
+expect {
+        "*yes/no" {send "yes\r"; exp_continue}
+        "assword: " {send "raspberry\r"; exp_continue}
+}
+
+#ssh into the pi to run the setup script
+spawn ssh -t pi@$IPADDR "sudo bash ./setup.sh"
+expect {
+        "*yes/no: " {send "yes\r"; exp_continue}
+        "assword: "  {send "raspberry\r"; interact}
+}
+

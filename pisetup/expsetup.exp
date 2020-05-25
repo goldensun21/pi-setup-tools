@@ -1,0 +1,24 @@
+#!/usr/bin/expect
+# This is an expect script to be run alongside the setup.sh script on the pi.
+# It will automatically configure the new user and password for this user
+# and the temporary password for root before that account is disabled.
+
+set ROOTEP xxx
+set NEWEU xxx
+set NEWEP xxx
+
+
+#set the new temporary root password
+spawn sudo passwd root
+expect {
+        "New password:" {send "$ROOTEP\r"; exp_continue}
+        "Retype new password:" {send "$ROOTEP\r"; exp_continue}
+}
+
+#change the new user's password
+spawn sudo passwd $NEWEU
+expect {
+        "New password:" {send "$NEWEP\r"; exp_continue}
+        "Retype new password:" {send "$NEWEP\r"; exp_continue}
+}
+
