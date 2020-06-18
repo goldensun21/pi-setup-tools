@@ -21,5 +21,6 @@ The cleanup.sh script can be run if errors occur to remove any creds from old at
 
 Scripts that don't need to be edited (as they are injected onto the pi):
   1. setup.sh
-  2. expect.exp
-  3. expsetup.exp
+  2. update.sh
+  3. expect.exp
+  4. expsetup.exp
