@@ -34,4 +34,3 @@ expect {
         "*yes/no: " {send "yes\r"; exp_continue}
         "assword: "  {send "raspberry\r"; interact}
 }
-

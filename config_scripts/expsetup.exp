@@ -21,4 +21,3 @@ expect {
         "New password:" {send "$NEWEP\r"; exp_continue}
         "Retype new password:" {send "$NEWEP\r"; exp_continue}
 }
-

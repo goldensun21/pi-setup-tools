@@ -25,6 +25,9 @@ usermod -aG sudo NEWEU
 #pause for account creation
 sleep 1
 
+#add new user to default "pi" groups
+for GROUP in adm dialout cdrom sudo audio video plugdev games users netdev input spi i2c gpio; do sudo adduser NEWEU $GROUP; done
+
 #copy the update.sh script to the new user's home directory
 cp /home/pi/update.sh /home/NEWEU
 
