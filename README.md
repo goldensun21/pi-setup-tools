@@ -19,7 +19,7 @@ The only scripts you'll really need to run with sudo bash are:
 
 The cleanup.sh script can be run if errors occur to remove any creds from old attempts
 
-Scripts that don't need to be edited (as they are injected onto the pi):
+Scripts that don't need to be edited that are kept in /config_scripts directory (as they are injected onto the pi):
   1. setup.sh
   2. update.sh
   3. expect.exp
