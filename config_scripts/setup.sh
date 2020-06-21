@@ -26,7 +26,7 @@ usermod -aG sudo NEWEU
 sleep 1
 
 #add new user to default "pi" groups
-for GROUP in adm dialout cdrom sudo audio video plugdev games users netdev input spi i2c gpio; do sudo adduser NEWEU $GROUP; done
+for GROUP in adm dialout cdrom sudo audio video plugNEWEU games users netdev input spi i2c gpio; do sudo adduser dev $GROUP; done
 
 #copy the update.sh script to the new user's home directory
 cp /home/pi/update.sh /home/NEWEU
@@ -36,8 +36,8 @@ echo "sudo bash /home/NEWEU/update.sh"\
 >> /home/NEWEU/.bashrc
 
 #change the hostname
-sed -i 's/raspberrypi/NEWHOST/' /etc/hostname
-sed -i 's/127.0.1.1.*/127.0.1.1     NEWHOSTNEWHOSTNEWHOST/' /etc/hosts
+sed -i 's/raspberrypi/NEWEU/' /etc/hostname
+sed -i 's/127.0.1.1.*/127.0.1.1     NEWEU/' /etc/hosts
 
 #pause 1s
 sleep 1

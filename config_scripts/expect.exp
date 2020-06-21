@@ -8,21 +8,21 @@
 set IPADDR xxx
 
 #scp to send the setup.sh script to the pi
-spawn scp ./setup.sh pi@$IPADDR:/home/pi/
+spawn scp ./config_scripts/setup.sh pi@$IPADDR:/home/pi/
 expect {
 	"*yes/no" {send "yes\r"; exp_continue}
 	"assword: " {send "raspberry\r"; exp_continue}
 }
 
 #scp to send the expsetup.exp script to the pi
-spawn scp ./expsetup.exp pi@$IPADDR:/home/pi/
+spawn scp ./config_scripts/expsetup.exp pi@$IPADDR:/home/pi/
 expect {
         "*yes/no" {send "yes\r"; exp_continue}
         "assword: " {send "raspberry\r"; exp_continue}
 }
 
 #scp to send the update.sh script to the pi
-spawn scp ./update.sh pi@$IPADDR:/home/pi/
+spawn scp ./config_scripts/update.sh pi@$IPADDR:/home/pi/
 expect {
         "*yes/no" {send "yes\r"; exp_continue}
         "assword: " {send "raspberry\r"; exp_continue}
